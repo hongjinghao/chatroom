@@ -1,0 +1,11 @@
+CC=gcc
+STD=-std=gnu99
+FLAG=-Wall -Werror -DDEGUB
+BIN=client server
+
+all:$(BIN)
+%:%.c tools.h network.h
+	$(CC) $(STD) $(FLAG) -lpthread $< tools.c network.c -o $@
+
+clean:
+	rm -rf $(BIN)
